@@ -1144,7 +1144,7 @@
 }
 .tl-message-nested.opened .tl-message-nested-header{
 	background: #f0f0f0;
-	padding-right: 220px;
+	padding-right: 284px;
 }
 .tl-message-nested.opened .tl-message-nested-header__text{
 	display: none;
@@ -1198,7 +1198,7 @@
 .tl-message-nested .has_attachments{
 	position: absolute;
 	top: 11px;
-	right: 217px;
+	right: 281px;
 	width: 16px;
 	height: 16px;
 	display: none;
@@ -1224,7 +1224,7 @@
 .tl-message-nested-header__btns{
 	display: none;
 	position: absolute;
-	right: 100px;
+	right: 164px;
 	top: 0;
 	margin-top: 11.5px;
 	height: 14px;
@@ -3778,7 +3778,6 @@
 	position: relative;
 	display: inline-block;
 	vertical-align: top;
-	padding-left: 6px;
 }
 .new-message__btns-action > a{
 	display: inline-block;
@@ -3795,21 +3794,21 @@
 	fill: #ff982b;
 }
 .new-message__btn-send-lated{
-	width: 16px;
-	height: 16px;
-	margin-top: 9px;
+	width: 20px;
+	height: 21px;
+	margin-top: 5.5px;
 }
 .new-message__btn-reminder{
-	width: 12px;
-	height: 16px;
-	margin-top: 8px;
+	width: 18px;
+	height: 22px;
+	margin-top: 5px;
 }
 .new-message__btn-attach{
 	position: relative;
 	overflow: hidden;
-	width: 14px;
-	height: 14px;
-	margin-top: 9px;
+	width: 21px;
+	height: 20px;
+	margin-top: 6px;
 }
 .new-message__btn-attach input{
 	position: absolute;
@@ -3827,24 +3826,35 @@
     display: block;
 }
 .new-message__btn-trackable-peace-of-content{
-	width: 12px;
-	height: 14px;
-	margin-top: 9px;
+	width: 18px;
+	height: 20px;
+	margin-top: 6px;
 }
 .new-message__btn-template{
-	width: 14px;
-	height: 14px;
-	margin-top: 9px;
+	width: 21px;
+	height: 20px;
+	margin-top: 6px;
 }
 .new-message__btn-snippet{
-	width: 13px;
-	height: 12px;
-	margin-top: 10px;
+	width: 18px;
+	height: 16px;
+	margin-top: 8px;
 }
 .new-message__btn-name{
-	width: 12px;
-	height: 13px;
-	margin-top: 9.5px;
+	width: 18px;
+	height: 19px;
+	margin-top: 6.5px;
+}
+.new-message__btn-signature{
+	width: 27px;
+	height: 20px;
+	margin-top: 6px;
+}
+.new-message-popup .new-message__btn-template,
+.new-message-popup .new-message__btn-snippet,
+.new-message-popup .new-message__btn-name,
+.new-message-popup .new-message__btn-signature{
+	display: none;
 }
 .new-message__btns-right{
 	position: absolute;
@@ -3903,6 +3913,40 @@
 	margin: -7.5px 0 0 -6px;
 	background: url('imgs/sales_automation/delete.svg') no-repeat 0 0;
 }
+.new-message__toggle-public-private{
+	position: absolute;
+	right: 107px;
+	top: 6px;
+	height: 20px;
+	white-space: nowrap;
+}
+.new-message-popup .new-message__toggle-public-private{
+	right: 103px;
+}
+.tl-msg-content .msg-btn .new-message__toggle-public-private{
+	right: 68px;
+	top: 3px;
+}
+.tl-message-nested-header .new-message__toggle-public-private{
+	right: 100px;
+	top: 9px;
+	display: none;
+}
+.tl-message-nested.opened .tl-message-nested-header .new-message__toggle-public-private{
+	display: block;
+}
+.new-message__toggle-public-private > .svg{
+	margin-top: 2.5px;
+	margin-right: 1px;
+	display: none;
+	vertical-align: top;
+}
+.new-message-popup .new-message__toggle-public-private > .svg{
+	margin-right: 0;
+}
+.new-message__toggle-public-private.private > .svg{
+	display: inline-block;
+}
 .new-message__list-action-btn{
 	position: relative;
 	display: inline-block;
@@ -3915,15 +3959,15 @@
 	margin-left: 9px;
 }
 .new-message__list-action-btn > .toggle-list > span{
-	width: 3px;
-	height: 3px;
+	width: 4px;
+	height: 4px;
 	display: inline-block;
 	vertical-align: top;
 	background-color: #939393;
 	border-radius: 50%;
 	-moz-border-radius: 50%;
 	-webkit-border-radius: 50%;
-	margin-top: 14.5px;
+	margin-top: 14px;
 	margin-left: 2px;
 }
 .new-message__list-action-btn > .toggle-list > span:first-child{
@@ -3966,7 +4010,7 @@
 	position: absolute;
 	display: none;
 	width: 302px;
-	bottom: 30px;
+	bottom: 34px;
 	border: 1px solid #D8D8D8;	
 	background-color: #FFFFFF;
 	z-index: 100;
@@ -3979,22 +4023,22 @@
 	-webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,0.15);
 }
 .new-message-tooltip--send-lated{
-	left: 21px;
+	left: 18px;
 }
 .new-message-popup .new-message-tooltip--send-lated{
-	left: 42px;
+	left: 45px;
 }
 .new-message-tooltip--reminder{
-	left: 48px;
+	left: 50px;
 }
 .new-message-tooltip--search-items-trackable{
-	left: 100px;
+	left: 114px;
 }
 .new-message-tooltip--search-items-template{
-	left: 123px;
+	left: 144px;
 }
 .new-message-tooltip--search-items-snippet{
-	left: 152px;
+	left: 177px;
 }
 .new-message-tooltip__content{
 	padding: 10px;
@@ -4034,7 +4078,7 @@
 	height: 0;
 }
 .new-message-popup .new-message-tooltip--send-lated .new-message-tooltip__arrow{
-	margin-left: -27px;
+	margin-left: -33px;
 }
 .nm-reminder__column,
 .nm-schedule__column{
