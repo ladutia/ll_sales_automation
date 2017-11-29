@@ -179,3 +179,17 @@
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 }
+.new-message-tooltip--send-lated,
+.new-message-tooltip--reminder,
+.new-message-tooltip--search-items-trackable{
+	left: 144px;
+}
+.new-message-tooltip--send-lated .new-message-tooltip__arrow{
+	left: 26px;
+}
+.new-message-tooltip--reminder .new-message-tooltip__arrow{
+	left: 57px;
+}
+.new-message-tooltip--search-items-trackable .new-message-tooltip__arrow{
+	left: 121px;
+}

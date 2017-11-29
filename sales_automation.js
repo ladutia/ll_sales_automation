@@ -98,4 +98,6 @@ $(document).ready(function() {
     		saPage.heightPreviewTemplate();
     	});
     }
+
+    email_popups.init();
 });

@@ -1058,333 +1058,7 @@ var acc_page = {
 		});
 	},
 	newMessage__init: function(){
-		$('body').on('click.new_message', function(e){
-			var $target = $(e.target);			
-
-			//$('.new-message__list-action-btn.open').removeClass('open');
-			//$('.new-message__btns-action > a.opened').removeClass('opened');
-
-			if ( $('.new-message-tooltip--reminder').length && !$target.parents('.new-message-tooltip--reminder').length && !$target.hasClass('new-message-tooltip--reminder') ){
-				$('.new-message-tooltip--reminder').remove();
-				removeClsassBtns();
-			}
-
-			if ( $('.new-message-tooltip--send-lated').length && !$target.parents('.new-message-tooltip--send-lated').length && !$target.hasClass('new-message-tooltip--send-lated') ){
-				$('.new-message-tooltip--send-lated').remove();
-				removeClsassBtns();
-			}
-
-			if ( $('.new-message-tooltip--search-items').length && !$target.parents('.new-message-tooltip--search-items').length && !$target.hasClass('new-message-tooltip--search-items') ){
-				$('.new-message-tooltip--search-items').remove();
-				removeClsassBtns();
-			}
-
-			//$('.new-message-tooltip--reminder .new-message-tooltip--reminder, .new-message-tooltip--search-items').remove();
-		});
-
-		function removeClsassBtns(){
-			$('.new-message__list-action-btn.open').removeClass('open');
-			$('.new-message__btns-action > a.opened').removeClass('opened');
-		}
-
-		$('body').on('click', '.new-message__list-action-btn', function(e){
-			e.preventDefault();
-			e.stopPropagation();
-		});
-
-		$('body').on('click', '.new-message__list-action-btn > .toggle-list', function(e){
-			e.preventDefault();
-			e.stopPropagation();
-			$(this).parent('').toggleClass('open');
-		});
-
-		$('body').on('click', '.new-message__list-action-btn li', function(e){
-			e.preventDefault();
-			e.stopPropagation();
-			$(this).parents('.new-message__list-action-btn').toggleClass('open');
-		});
-		/*
-		$('body').on('click.events-new-message-tooltip', '.new-message-tooltip--reminder, .new-message-tooltip--send-lated, .new-message-tooltip--search-items', function(e){
-			e.preventDefault();
-			e.stopPropagation();
-		});*/
-
-		$('body').on('click', '.new-message__btn-send-lated', function(e){
-			e.preventDefault();
-			e.stopPropagation();
-			var $el = $(this);
-			var content = '<div class="new-message-tooltip new-message-tooltip--send-lated">'+
-		                        '<div class="new-message-tooltip__arrow"></div>'+
-		                        '<div class="new-message-tooltip__content">'+
-		                            '<div class="nm-schedule">'+
-		                                '<div class="nm-schedule__columns clearfix">'+
-		                                    '<div class="nm-schedule__column">'+
-		                                        '<div class="nm-schedule__date">'+
-		                                            '<label>Date</label>'+
-		                                            '<div class="nm-schedule__date-input">'+
-		                                                '<input type="text" class="txt-field"/>'+
-		                                                '<i class="nm-schedule__icn-search-date"></i>'+
-		                                            '</div>'+
-		                                        '</div>'+
-		                                    '</div>'+
-		                                    '<div class="nm-schedule__column">'+
-		                                        '<div class="nm-schedule__time">'+
-		                                            '<label>Time</label>'+
-		                                            '<div class="nm-schedule__time-input">'+
-		                                                '<input type="text" class="txt-field" value="1:00 PM"/>'+
-		                                            '</div>'+
-		                                        '</div>'+
-		                                    '</div>'+
-		                                '</div>'+
-		                                '<div class="nm-schedule__btns">'+
-		                                    '<a href="#" class="t-btn-gray">1 Day</a>'+
-		                                    '<a href="#" class="t-btn-gray">1 Week</a>'+
-		                                    '<a href="#" class="t-btn-gray">1 Month</a>'+
-		                                '</div>'+
-		                                '<div class="nm-schedule__btns-action">'+
-			                                '<a href="javascript:void(0);" class="t-btn-orange nm-schedule__btn-schedule">Schedule</a>'+
-			                                '<a href="javascript:void(0);" class="t-btn-gray nm-schedule__btn-clear">Clear</a>'+
-		                                '</div>'+
-		                            '</div>'+
-		                        '</div>'+
-		                   '</div>';
-
-			if ( $el.hasClass('opened') ) {
-				$el.removeClass('opened');
-				$('.new-message-tooltip--send-lated').remove();
-			} else {
-				$('.new-message__btns-action > a.opened').removeClass('opened');
-				$('.new-message-tooltip--reminder, .new-message-tooltip--send-lated, .new-message-tooltip--search-items').remove();
-				$el.addClass('opened');
-				$el.after(content);
-				acc_page.newMessage__dateSchedule();
-				acc_page.newMessage__time();
-				$('.new-message-tooltip--send-lated').show();
-			}
-		});
-
-		$('body').on('click', '.new-message__btn-reminder', function(e){
-			e.preventDefault();
-			e.stopPropagation();
-			var $el = $(this);
-			var content = '<div class="new-message-tooltip new-message-tooltip--reminder">'+
-                                '<div class="new-message-tooltip__arrow"></div>'+
-                                '<div class="new-message-tooltip__content">'+
-                                    '<div class="nm-reminder">'+
-                                        '<div class="nm-reminder__title">Remind me if no reply after:</div>'+
-                                        '<div class="nm-reminder__columns clearfix">'+
-                                            '<div class="nm-reminder__column">'+
-                                                '<div class="nm-reminder__day-select">'+
-                                                    '<select>'+
-                                                        '<option selected>1</option>'+
-                                                        '<option>2</option>'+
-                                                        '<option>3</option>'+
-                                                        '<option>4</option>'+
-                                                        '<option>5</option>'+
-                                                        '<option>6</option>'+
-                                                        '<option>7</option>'+
-                                                        '<option>8</option>'+
-                                                        '<option>9</option>'+
-                                                        '<option>10</option>'+
-                                                        '<option>11</option>'+
-                                                        '<option>12</option>'+
-                                                        '<option>13</option>'+
-                                                        '<option>14</option>'+
-                                                        '<option>15</option>'+
-                                                        '<option>16</option>'+
-                                                        '<option>17</option>'+
-                                                        '<option>18</option>'+
-                                                        '<option>19</option>'+
-                                                        '<option>20</option>'+
-                                                        '<option>21</option>'+
-                                                        '<option>22</option>'+
-                                                        '<option>23</option>'+
-                                                        '<option>24</option>'+
-                                                        '<option>25</option>'+
-                                                        '<option>26</option>'+
-                                                        '<option>27</option>'+
-                                                        '<option>28</option>'+
-                                                        '<option>29</option>'+
-                                                        '<option>30</option>'+
-                                                    '</select>'+
-                                                '</div>'+
-                                            '</div>'+
-                                            '<div class="nm-reminder__column">'+
-                                                '<div class="nm-reminder__period-select">'+
-                                                   '<select>'+
-                                                        '<option>Days</option>'+
-                                                        '<option>Months</option>'+
-                                                        '<option>Years</option>'+
-                                                    '</select>'+
-                                                '</div>'+
-                                            '</div>'+
-                                        '</div>'+
-                                        '<div class="nm-reminder__datepicker">'+
-                                        	'<div class="nm-reminder__title">Or, if no reply after this specific day:</div>'+
-                                            '<input type="text" class="txt-field"/>'+
-                                        '</div>'+
-                                        '<div class="nm-reminder__switches">'+
-	                                        '<div class="nm-reminder__title">Send reminder as:</div>'+
-	                                        '<div class="ll-switch switch-small">'+
-	                                        	'<div class="switch">'+
-	                                        		'<input id="remind_send_email" name="remind_send_email" class="cmn-toggle cmn-toggle-round" type="checkbox">'+
-	                                        		'<label for="remind_send_email"></label>'+
-	                                        	'</div>'+
-	                                       		'<div class="ll-switch-lb">Email</div>'+
-	                                        '</div>'+
-	                                        '<div class="ll-switch switch-small">'+
-	                                        	'<div class="switch">'+
-	                                        		'<input id="remind_create_task" checked="checked" name="remind_create_task" class="cmn-toggle cmn-toggle-round" type="checkbox">'+
-	                                        		'<label for="remind_create_task"></label>'+
-	                                        	'</div>'+
-	                                        	'<div class="ll-switch-lb">Task</div>'+
-                                        	'</div>'+
-                                        
-                                        '<div class="nm-reminder__btns-action">'+
-			                                '<a href="javascript:void(0);" class="t-btn-gray nm-reminder__btn-clear">Clear</a>'+
-			                                '<a href="javascript:void(0);" class="t-btn-orange nm-reminder__btn-save">Save</a>'+
-		                                '</div>'+
-                                        '</div>'+
-                                    '</div>'+
-                                '</div>'+
-                            '</div>';
-
-			if ( $el.hasClass('opened') ) {
-				$el.removeClass('opened');
-				$('.new-message-tooltip--reminder').remove();
-			} else {
-				$('.new-message__btns-action > a.opened').removeClass('opened');
-				$('.new-message-tooltip--reminder, .new-message-tooltip--send-lated, .new-message-tooltip--search-items').remove();
-				$el.addClass('opened');
-				$el.after(content);
-				acc_page.newMessage__dateReminder();
-				$('.new-message-tooltip--reminder').find('select').chosen();
-				$('.new-message-tooltip--reminder').show();
-			}
-			
-		});
-		
-		$('body').on('change.remind_send_email_toggle', '.remind_send_email_toggle', function(){
-			var $toggle = $(this);
-			var $box = $toggle.parents('.new-message__toggle-public-private');
-
-			$toggle.is(':checked') ? $box.removeClass('private') : $box.addClass('private');
-		});
-
-		$('body').on('click', '.new-message__btn-trackable-peace-of-content, .new-message__btn-template, .new-message__btn-snippet', function(e){
-			e.preventDefault();
-			e.stopPropagation();
-			var $el = $(this);
-			var className = '';
-			var searchText = '';
-			var content = ''
-
-            if ( $el.hasClass('new-message__btn-trackable-peace-of-content') ){
-            	className = 'new-message-tooltip--search-items-trackable';
-            	searchText = 'trackable peace of content';
-            } else if (  $el.hasClass('new-message__btn-snippet') ){
-            	className = 'new-message-tooltip--search-items-snippet';
-            	searchText = 'snippet';
-            } else{
-            	className = 'new-message-tooltip--search-items-template';
-            	searchText = 'template';
-            }
-
-            content = '<div class="new-message-tooltip new-message-tooltip--search-items">'+
-                                '<div class="new-message-tooltip__arrow"></div>'+
-                                '<div class="new-message-tooltip__content">'+
-                                	'<div class="new-message-tooltip__close"></div>'+
-                                    '<div class="nm-search-items">'+
-                                        '<div class="nm-search-items__search">'+
-                                            '<div class="nm-search-items__search-input">'+
-                                                '<input type="text" class="txt-field"/>'+
-                                            '</div>'+
-                                        '</div>'+
-                                        '<div class="nm-search-items__search-list">'+
-                                            '<div class="nm-search-items__search-list-none">No '+ searchText +' found</div>'+
-                                            '<ul class="nm-search-items__search-list-items">'+
-                                                '<li><span class="search-text">Item 1</span></li>'+
-                                                '<li><span class="search-text">Item 2</span></li>'+
-                                                '<li><span class="search-text">Item 3</span></li>'+
-                                                '<li><span class="search-text">Item 4</span></li>'+
-                                                '<li><span class="search-text">Item 5</span></li>'+
-                                            '</ul>'+
-                                        '</div>'+
-                                    '</div>'+
-                                '</div>'+
-                            '</div>';
-
-			if ( $el.hasClass('opened') ) {
-				$el.removeClass('opened');
-				$('.new-message-tooltip--search-items').remove();
-			} else {
-				$('.new-message__btns-action > a.opened').removeClass('opened');
-				$('.new-message-tooltip--reminder, .new-message-tooltip--send-lated, .new-message-tooltip--search-items').remove();
-				$el.addClass('opened');
-				$el.after(content);
-				acc_page.newMessage__searchTooltipInit();
-				$('.new-message-tooltip--search-items').addClass(className).show().find('input').focus();
-			}
-			
-		});
-		
-		$('body').on('click', '.new-message-tooltip__close', function(e){
-			e.stopPropagation();
-			e.preventDefault();
-
-			var $tooltip = $(this).parents('.new-message-tooltip');
-			$tooltip.prev().removeClass('opened');
-			$tooltip.remove();
-		});
-
-		$('body').on('click', '.nm-schedule__btn-schedule', function(e){
-			e.preventDefault();
-			e.stopPropagation();
-			var $this = $(this);
-			var $box = $this.parents('.new-message__actions');
-
-			$box.find('.new-message__btn-send').hide();
-			$box.find('.new-message__btn-sсhedule').css('display','inline-block');
-
-			acc_page.newMessage__seletedBtns($this.parents('.new-message-tooltip'));
-			acc_page.newMessage__tooltipHide($this.parents('.new-message-tooltip'));
-		});
-
-		$('body').on('click', '.nm-schedule__btns .t-btn-gray', function(e){
-			e.preventDefault();
-			e.stopPropagation();
-
-			var $this = $(this);
-
-			acc_page.newMessage__seletedBtns($this.parents('.new-message-tooltip'));
-			acc_page.newMessage__tooltipHide($this.parents('.new-message-tooltip'));
-		});
-
-		$('body').on('click', '.nm-reminder__btn-clear', function(e){
-			e.preventDefault();
-			e.stopPropagation();
-
-			var $tooltip = $(this).parents('.new-message-tooltip');
-
-			$tooltip.find('.nm-reminder__datepicker .txt-field').datetimepicker('reset');
-			$tooltip.find('.nm-reminder__day-select select option').eq(0).attr('selected', true);
-            $tooltip.find('.nm-reminder__day-select').find('select').trigger('liszt:updated');
-            $tooltip.find('.nm-reminder__period-select select option').eq(0).attr('selected', true);
-            $tooltip.find('.nm-reminder__period-select').find('select').trigger('liszt:updated');
-            $tooltip.prev().removeClass('selected');
-		});
-
-		$('body').on('click', '.nm-schedule__btn-clear', function(e){
-			e.preventDefault();
-			e.stopPropagation();
-
-			var $tooltip = $(this).parents('.new-message-tooltip');
-
-			$tooltip.find('.nm-schedule__date-input .txt-field, .nm-schedule__time-input .txt-field').datetimepicker('reset');
-          	$tooltip.find('.nm-schedule__date-input .txt-field').val($.datepicker.formatDate('dd/mm/yy', new Date()));
-            $tooltip.prev().removeClass('selected');
-		});
-
+		email_popups.init();
 		$('body').on('click', '.new-message__btn-send, .new-message__btn-sсhedule', function(e){
 			e.preventDefault();
 			e.stopPropagation();
@@ -1405,13 +1079,6 @@ var acc_page = {
 			$this.hide();
 			$box.find('.new-message__btn-send, .new-message__btn-sсhedule').removeClass('disabled');
 			$box.find('.new-message__btns-action').css('display','inline-block');
-		});
-
-		$('body').on('click', '.new-message__attach-file-delete', function(e){
-			e.preventDefault();
-			e.stopPropagation();
-			$(this).parents('.new-message__attach-file').remove();
-			acc_page.newMessage__countAttchFiles();
 		});
 
 		$('body').on('click', '.new-message__btn-expand', function(e){
@@ -1562,29 +1229,6 @@ var acc_page = {
 			}
 
 		});
-		$('body').on('change', '.new-message__btn-attach input', function(e){
-			e.preventDefault();
-			e.stopPropagation();
-
-			var html = '<div class="new-message__attach-files"></div>';
-			var val = e.target.files[0].name;
-			var $box = $(this).parents('.new-message');
-			var htmlFile = '';
-
-			if ( val != ''){
-				htmlFile = '<div class="new-message__attach-file">'+
-                                '<div class="new-message__attach-file-name">'+ val +'</div>'+
-                                '<div class="new-message__attach-file-delete"></div>'+
-                            '</div>';
-
-				if ( !$box.find('.new-message__attach-files').length ){
-					$box.find('.new-message__actions').before(html);
-					acc_page.newMessage__seletedBtns($(this).parents('.new-message__btn-attach'), true);
-				}
-
-				$box.find('.new-message__attach-files').append(htmlFile);
-			}
-		});
 	},
 	newMessage__isCountListNested: function($box){
 		var count = $box.find('.tl-message-nested').length;
@@ -1595,37 +1239,6 @@ var acc_page = {
 			$box.removeClass('tl-msg-nested');
 			$box.find('.tl-message-nested-list').remove();
 		}
-	},
-	newMessage__dateSchedule: function(){
-		$('.nm-schedule__date-input .txt-field').datetimepicker({
-			timepicker:false,
-			format:'d/m/Y',
-			value: new Date(),
-			onChangeDateTime:function(dp,$input){
-			    acc_page.newMessage__seletedBtns($input.parents('.new-message-tooltip'));
-		  	}
-		});
-	},
-	newMessage__dateReminder: function(){
-		$('.nm-reminder__datepicker .txt-field').datetimepicker({
-			timepicker:false,
-			format:'d/m/Y',
-			inline: true,
-			value: new Date(),
-			onChangeDateTime:function(dp,$input){
-			    acc_page.newMessage__seletedBtns($input.parents('.new-message-tooltip'));
-		  	}
-		});
-	},
-	newMessage__time: function(){
-		$('.nm-schedule__time-input .txt-field').datetimepicker({
-			datepicker:false,
-			format: 'g:i A',
-			formatTime: 'g:i A',
-			onChangeDateTime:function(dp,$input){
-			    acc_page.newMessage__seletedBtns($input.parents('.new-message-tooltip'));
-		  	}
-		});
 	},
 	newMessage__ccBcc: function(){
 		$('body').on('click', '.new-message__button-cc', function(){
@@ -1642,65 +1255,6 @@ var acc_page = {
 			$this.parents('.new-message__fields').find('.new-message__field-bcc').toggle().find('select').val('').trigger('liszt:updated');
 			
 			acc_page.newMessage__popupEditorHeight($this.parents('.new-message'));
-		});
-	},
-	newMessage__searchTooltipInit: function(){
-		$('.nm-search-items__search-input .txt-field').on('keyup', function(){
-			var val = $(this).val();
-
-			if ( val == '' ){
-				$('.nm-search-items__search-list-none').hide();
-				$('.nm-search-items__search-list-items').show().find('li').show();
-			} else{
-				acc_page.newMessage__searchTooltip(val);
-			}
-			
-		});
-		$('.nm-search-items__search-list-items li').on('click', function(e){
-			e.preventDefault();
-			e.stopPropagation();
-
-			var $this = $(this);
-			acc_page.newMessage__addTempaleteEditor($this.parents('.new-message').find('.new-message__field-message-editor').attr('id'));
-			acc_page.newMessage__seletedBtns($this.parents('.new-message-tooltip'));
-			acc_page.newMessage__tooltipHide($this.parents('.new-message-tooltip'));
-		});
-	},
-	newMessage__tooltipHide: function($tooltip){
-		$tooltip.prev().removeClass('opened');
-		$tooltip.remove();
-	},
-	newMessage__addTempaleteEditor: function($editorId){
-		tinymce.get($editorId).execCommand('mceInsertContent', false, ' <strong>Lorem epsum</strong>');
-	},
-	newMessage__searchTooltip: function(searchText){
-		var countItem = 0;
-		$('.nm-search-items__search-list-items li').hide();
-		$('.nm-search-items__search-list-items li').each(function(){
-			$(this).find('.search-text:Contains("'+ searchText +'")').each(function(){
-				$(this).parent().show();
-				countItem++;
-				return false;
-			});
-		});
-		
-
-		if (countItem > 0){
-			$('.nm-search-items__search-list-none').hide();
-			$('.nm-search-items__search-list-items').show();
-		} else{
-			$('.nm-search-items__search-list-none').show();
-			$('.nm-search-items__search-list-items').hide();
-		}
-	},
-	newMessage__countAttchFiles: function(){
-		$('.new-message__attach-files').each(function(){
-			var $wrap = $(this);
-
-			if ( $wrap.find('.new-message__attach-file').length < 1 ){
-				$wrap.parents('.new-message').find('.new-message__btn-attach').removeClass('selected');
-				$wrap.remove();
-			}
 		});
 	},
 	newMessage__editor: function(){
@@ -1836,10 +1390,10 @@ var acc_page = {
                                         '</a>'+
                                         '<div class="drop-list">'+
                                             '<ul>'+
-                                                '<li idx="0">Template</li>'+
-                                                '<li idx="1">Snippet</li>'+
-                                                '<li idx="2">Insert Merge Field</li>'+
-                                                '<li idx="3">Change Signature</li>'+
+                                                '<li idx="0" class="item__btn-template"><svg class="svg" width="21px" height="20px" viewBox="0 0 21 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs></defs><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Sales-automatin" transform="translate(-701.000000, -667.000000)" fill-rule="nonzero" class="svg-fill" fill="#333333"><g id="Group-12" transform="translate(560.000000, 661.000000)"><g id="Group-33" transform="translate(0.000000, 5.000000)"><g id="if_document_text_add_103511" transform="translate(141.584475, 1.375000)"><g id="document_x5F_text_x5F_add"><path d="M14.7191781,8.45736719 L14.7191781,3.359125 L11.2932894,0 L0,0 L0,19.25 L14.7191781,19.25 L14.7191781,19.2145078 C17.4784107,18.9137266 19.6243442,16.622375 19.6255708,13.8359375 C19.6243442,11.0482969 17.4784107,8.75634375 14.7191781,8.45736719 Z M11.038157,1.45157031 L13.2386741,3.609375 L11.038157,3.609375 L11.038157,1.45157031 L11.038157,1.45157031 Z M1.22659817,18.046875 L1.22659817,1.20192188 L9.81278539,1.20192188 L9.81278539,4.81189844 L13.4925799,4.81189844 L13.4925799,8.45736719 C12.4180799,8.57407031 11.4368014,8.99275781 10.6395126,9.625 L2.45319635,9.625 L2.45319635,10.828125 L9.51656193,10.828125 C9.26388271,11.1986875 9.06088071,11.6035391 8.90694264,12.03125 L2.45319635,12.03125 L2.45319635,13.234375 L8.62237186,13.234375 C8.59967979,13.4322891 8.58618721,13.6320078 8.58618721,13.8359375 C8.58618721,15.5377578 9.38838242,17.0548984 10.6401259,18.046875 L1.22659817,18.046875 Z M14.105879,17.9764922 C11.7747292,17.9710781 9.88883447,16.1212734 9.88331478,13.8359375 C9.88883447,11.5493984 11.7747292,9.69959375 14.105879,9.69417969 C16.4358022,9.69959375 18.3216969,11.5493984 18.3272166,13.8359375 C18.3216969,16.1212734 16.4358022,17.9710781 14.105879,17.9764922 Z M12.2659817,7.21875 L12.2659817,8.421875 L2.45319635,8.421875 L2.45319635,7.21875 L12.2659817,7.21875 Z M17.1723744,13.234375 L17.1723744,14.4375 L14.7204047,14.4375 L14.7204047,16.84375 L13.4925799,16.84375 L13.4925799,14.4375 L11.0393836,14.4375 L11.0393836,13.234375 L13.4925799,13.234375 L13.4925799,10.828125 L14.7204047,10.828125 L14.7204047,13.234375 L17.1723744,13.234375 Z" id="Template"></path></g></g></g></g></g></g></svg>Template</li>'+
+                                                '<li idx="1" class="item__btn-snippet"><svg class="svg" width="18px" height="16px" viewBox="0 0 18 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs></defs><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Sales-automatin" transform="translate(-738.000000, -669.000000)" fill-rule="nonzero" class="svg-fill" fill="#939393"><g id="Group-12" transform="translate(560.000000, 661.000000)"><g id="Group-33" transform="translate(0.000000, 5.000000)"><path d="M178.732877,18.5623185 C178.73936,18.5623185 178.745791,18.5624326 178.752169,18.5626594 C178.754769,18.5624321 178.748338,18.5623185 178.732877,18.5623185 Z M185.500188,10.0387202 L185.500188,3.43731848 L179.203998,3.43731848 L179.203998,9.57570999 L182.766338,9.57570999 L182.75125,10.2777006 C182.690848,13.088006 181.521655,15.1530414 179.203998,16.4903795 L179.203998,18.4937514 C183.414392,17.8015019 185.500188,15.0242318 185.500188,10.0387202 Z M196.025916,10.0387202 L196.025916,3.43731848 L189.736907,3.43731848 L189.736907,9.57570999 L193.299247,9.57570999 L193.284159,10.2777006 C193.223875,13.0824843 192.052389,15.1475808 189.736907,16.486248 L189.736907,18.4489199 C194.190939,17.4236648 196.025916,14.9516211 196.025916,10.0387202 Z" id="snippets" transform="translate(187.379396, 10.999989) scale(-1, -1) translate(-187.379396, -10.999989) "></path></g></g></g></g></svg>Snippet</li>'+
+                                                '<li idx="2" class="item__btn-name"><svg class="svg" width="18px" height="19px" viewBox="0 0 18 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs></defs><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Sales-automatin" transform="translate(-774.000000, -668.000000)" fill-rule="nonzero" class="svg-fill" fill="#939393"><g id="Group-12" transform="translate(560.000000, 661.000000)"><g id="Group-33" transform="translate(0.000000, 5.000000)"><path d="M214.479452,6.325 C214.479452,5.878125 214.574368,5.34047896 214.760547,4.984375 C214.946728,4.62827193 215.132908,4.18139693 215.508919,3.82180198 C215.881279,3.46569802 216.253639,3.196875 216.720915,3.01882302 C217.18819,2.84077193 217.750381,2.75 218.403836,2.75 C219.057292,2.75 219.619482,2.84077193 220.086758,3.01882302 C220.554033,3.196875 221.021309,3.46569802 221.302404,3.82180198 C221.674765,4.090625 221.95586,4.5375 222.050776,4.984375 C222.14204,5.43125 222.328221,5.878125 222.328221,6.325 L222.328221,7.21875 C222.328221,7.665625 222.236955,8.20327193 222.050776,8.559375 C221.860945,8.91547896 221.674765,9.36235396 221.302404,9.72194802 C220.926394,10.078052 220.554033,10.256104 220.086758,10.524927 C219.619482,10.702979 219.057292,10.79375 218.403836,10.79375 C217.750381,10.79375 217.18819,10.702979 216.720915,10.524927 C216.253639,10.346875 215.786364,10.078052 215.508919,9.72194802 C215.132908,9.453125 214.946728,9.00625 214.760547,8.65014693 C214.574368,8.29055198 214.479452,7.75639693 214.479452,7.21875 L214.479452,6.325 Z M216.910745,7.21875 C216.910745,7.39680198 216.910745,7.665625 217.00201,7.84367698 C217.00201,8.02172896 217.096925,8.20327193 217.283105,8.38132302 C217.378021,8.559375 217.5642,8.65014693 217.750381,8.73742698 C217.936561,8.82819802 218.122741,8.82819802 218.403836,8.82819802 C218.684932,8.82819802 218.871112,8.82819802 219.057292,8.73742698 C219.247123,8.65014693 219.433302,8.559375 219.524568,8.38132302 C219.619482,8.20327193 219.714398,8.02172896 219.805663,7.84367698 C219.900578,7.665625 219.900578,7.48757302 219.900578,7.21875 L219.900578,6.325 C219.900578,6.14694802 219.900578,5.878125 219.805663,5.70007302 C219.805663,5.52202193 219.714398,5.34047896 219.524568,5.25319802 C219.433302,5.07514693 219.247123,4.984375 219.057292,4.89360396 C218.871112,4.80632302 218.684932,4.71555198 218.403836,4.71555198 C218.122741,4.71555198 217.936561,4.71555198 217.750381,4.80632302 C217.5642,4.984375 217.378021,5.07514693 217.283105,5.25319802 C217.096925,5.34047896 217.00201,5.52202193 217.00201,5.70007302 C216.910745,5.878125 216.910745,6.14694802 216.910745,6.325 L216.910745,7.21875 Z M219.247123,19.106323 L217.469285,18.212573 L226.34752,4.62827193 L228.125357,5.52202193 L219.247123,19.106323 Z M223.452602,16.15625 C223.452602,15.709375 223.543867,15.171729 223.730047,14.815625 C223.919878,14.36875 224.197323,14.0126469 224.478418,13.653052 C224.854429,13.296948 225.226788,13.1188969 225.694064,12.850073 C226.161339,12.58125 226.723531,12.58125 227.376986,12.58125 C228.030441,12.58125 228.592633,12.6720219 229.059908,12.850073 C229.527184,13.028125 229.994459,13.296948 230.271904,13.653052 C230.647914,14.0126469 230.834094,14.36875 231.020275,14.815625 C231.206455,15.2625 231.30137,15.709375 231.30137,16.15625 L231.30137,17.05 C231.30137,17.496875 231.206455,18.0345219 231.020275,18.390625 C230.834094,18.8375 230.647914,19.193604 230.271904,19.553198 C229.899543,19.909302 229.527184,20.087354 229.059908,20.356177 C228.592633,20.534229 228.030441,20.625 227.376986,20.625 C226.723531,20.625 226.161339,20.534229 225.694064,20.356177 C225.226788,20.178125 224.759513,19.909302 224.478418,19.553198 C224.106057,19.193604 223.919878,18.8375 223.730047,18.390625 C223.543867,17.94375 223.452602,17.496875 223.452602,17.05 L223.452602,16.15625 Z M225.78898,17.05 C225.78898,17.228052 225.78898,17.496875 225.880244,17.674927 C225.975159,17.852979 226.066425,18.0345219 226.161339,18.212573 C226.256255,18.390625 226.442435,18.4813969 226.628615,18.568677 C226.814795,18.659448 227.000976,18.659448 227.282071,18.659448 C227.563166,18.659448 227.844261,18.659448 228.030441,18.568677 C228.216622,18.4813969 228.402802,18.390625 228.497717,18.212573 C228.592633,18.0345219 228.683897,17.852979 228.778812,17.674927 C228.870078,17.496875 228.870078,17.318823 228.870078,17.05 L228.870078,16.15625 C228.870078,15.978198 228.870078,15.709375 228.778812,15.531323 C228.683897,15.3532719 228.592633,15.171729 228.497717,14.993677 C228.402802,14.815625 228.216622,14.724854 228.030441,14.637573 C227.844261,14.546802 227.658082,14.546802 227.376986,14.546802 C227.09589,14.546802 226.90971,14.546802 226.723531,14.637573 C226.5337,14.724854 226.34752,14.815625 226.256255,14.993677 C226.161339,15.171729 226.066425,15.3532719 225.975159,15.531323 C225.880244,15.709375 225.880244,15.887427 225.880244,16.15625 L225.880244,17.05 L225.78898,17.05 Z" id="Name"></path></g></g></g></g></svg>Insert Merge Field</li>'+
+                                                '<li idx="3" class="item__btn-signature"><svg class="svg" width="27px" height="20px" viewBox="0 0 27 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs></defs><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Sales-automatin" transform="translate(-808.000000, -667.000000)" fill-rule="nonzero" class="svg-fill" fill="#979797"><g id="Group-12" transform="translate(560.000000, 661.000000)"><g id="Group-33" transform="translate(0.000000, 5.000000)"><path d="M265.639093,13.7366543 C265.59523,13.9369591 265.577104,14.0203626 265.551527,14.1401271 C264.916273,17.1146775 264.959884,18.4869644 266.782524,18.9604752 C268.664729,19.4494609 274.685634,18.2461254 274.757325,16.960799 C274.80325,16.1374136 272.466817,16.8107714 270.358542,17.0901845 C269.175744,17.2469425 268.343721,17.3562879 267.76496,17.1768689 C267.47658,17.0901845 267.480991,16.7731219 267.47658,16.6343426 C267.461821,16.1699352 267.553832,15.5445392 267.76496,14.5559413 C267.789623,14.4404569 267.807033,14.3603503 267.850177,14.1633215 C268.240274,12.3850614 268.326481,11.876352 268.253731,11.2141776 C268.087443,9.7006022 266.728808,9.26609434 265.205721,10.069492 C263.676876,10.8759269 262.856833,12.3088779 262.06087,14.7859094 C261.954223,15.117793 261.591656,16.3030719 261.626674,16.1901093 C261.259058,17.3760113 261.003567,17.9966527 260.723517,18.3432217 C260.554288,18.5526478 260.520954,18.5606288 260.190612,18.4144065 C259.783988,18.2344186 260.18627,16.4111371 261.900573,11.8810104 C262.006366,11.6012683 262.048782,11.4888638 262.112057,11.3203748 C263.143613,8.57356516 263.639093,6.95942893 263.788334,5.50506558 C264.01332,3.31257094 263.241119,1.78031564 261.210913,1.43833709 C257.694604,0.846031633 254.656249,4.4351749 251.385838,11.0638612 C250.212429,13.4422049 247.134635,19.5540482 248.43982,20.074194 C249.745005,20.5943397 252.298523,14.2555183 253.434533,11.9529784 C256.219607,6.30800613 258.856708,3.19285559 260.81187,3.52219335 C261.44234,3.62839291 261.667281,4.07473702 261.541319,5.30223714 C261.415737,6.52604137 260.952568,8.03491746 259.982873,10.6170043 C259.920287,10.7836584 259.878383,10.8947079 259.773193,11.1728542 C258.644187,14.1563065 258.317012,15.093017 258.044612,16.3276329 C257.604337,18.3231142 257.825781,19.708782 259.227141,20.3290801 C260.530809,20.9061355 261.713854,20.6228905 262.522611,19.62203 C263.029888,18.9942611 263.347332,18.223123 263.794317,16.7811798 C263.763236,16.8814439 264.120713,15.7128061 264.222242,15.3968485 C264.765636,13.7058114 265.288294,12.6860161 265.96061,12.1466135 C265.904354,12.4982213 265.802175,12.9932424 265.639093,13.7366543 Z" id="Path-2"></path></g></g></g></g></svg>Change Signature</li>'+
                                             '</ul>'+
                                         '</div>'+
                                     '</div>'+
@@ -1998,12 +1552,6 @@ var acc_page = {
 
 			indexItem++;
 		});
-	},
-	newMessage__seletedBtns:function($el, isbtn){
-		if ( isbtn )
-			$el.addClass('selected');
-		else
-			$el.prev().addClass('selected');
 	},
 	newMessage__popupEditorHeight: function($box){
 		var resizeHeight = 300;
